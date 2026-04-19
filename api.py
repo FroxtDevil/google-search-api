@@ -37,7 +37,6 @@ def play_store_search():
                 "score": app_info.get("score")
             })
 
-        # Final Response with Search Count and Developer Credit
         return jsonify({
             "developer_contact": DEVELOPER_INFO,
             "total_results": len(formatted_results),
@@ -63,9 +62,5 @@ def get_app_details(app_id):
     except Exception as e:
         return jsonify({"error": f"Failed to fetch details: {str(e)}"}), 500
 
-# Vercel ke liye handler
-def handler(event, context):
-    return app(event, context)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# Vercel requirements
+# 'app' object ko hi export karna hota hai
